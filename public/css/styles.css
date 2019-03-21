@@ -1,0 +1,41 @@
+.bg-info{
+    font-family: Raleway !important;
+    color: #555;
+    background-color: #ff5252 !important;
+
+}
+.margin{
+    margin: 100px;
+}
+.flexbox{
+    display: flex;
+    flex-direction: row;
+    margin: auto !important;
+    background-color: white;
+    width: auto;
+    justify-content: space-evenly;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+}
+.row{
+    display: flex;
+    align-items: center;
+    margin: auto;
+
+    flex-direction: row;
+
+}
+
+.gallery{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+.col-md-3{
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    width: 200px;
+}
