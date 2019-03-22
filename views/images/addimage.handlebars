@@ -16,7 +16,7 @@
 <body class="margin" style="background-color: #ff5252 !important;">
 
 <div class="row">
-    <div class="col-md-6 offset-md-3" style="background-color: #fff;margin-top: 85px;padding:20px;">
+    <div class="col-md-4 offset-md-4" style="background-color: #fff;margin-top: 85px;padding:20px;">
         <h3>{{viewTemplate}}</h3>
         <form action="/images" method="POST" autocomplete="off" enctype="multipart/form-data">
             <div class="form-group">
@@ -40,13 +40,13 @@
             </div>
             <div class="form-group">
                 <label>Details</label>
-                <input type="text" class="form-control" name="details" placeholder="City" value="{{image.details}}"
+                <input type="text" maxlength="100" class="form-control" name="details" placeholder="City" value="{{image.details}}"
                        required>
             </div>
             <div class="form-group">
                 <div class="flex">
-                    <button type="submit" class="btn btn-success"><i class="fa fa-database"></i> Submit</button>
-                    <a class="btn btn-dark" href="/images/gallery"><i class="fa fa-list-alt"></i> Gallery </a>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-share"></i> Submit</button>
+                    <a class="btn btn-dark" href="/images/gallery"><i class="fa fa-image"></i> Gallery </a>
                 </div>
             </div>
         </form>

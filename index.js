@@ -3,7 +3,9 @@ require('handlebars');
 const router = require('./router/router.js');
 const express = require('express');
 const mongoose = require('mongoose');
-const moment = require('moment');
+let Handlebars = require("handlebars");
+let MomentHandler = require("handlebars.moment");
+MomentHandler.registerHelpers(Handlebars);
 const bodyParser = require('body-parser');
 const path = require('path');
 const exphbs = require('express-handlebars');
@@ -15,6 +17,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/small'));
 app.use(express.static('uploads'));
 app.set('views', path.join(__dirname, '/views/'));
 app.engine('handlebars', exphbs({
