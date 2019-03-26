@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd3809cf-77df-4340-8840-41a262d5b31d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uploads/250px-Juha_Sipilä_18-4-2015.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/Sipila_DSC_0053_20180301-400x300.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/avaruuslonkero-min.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/lataus (3).png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/uploads/mid/mid_250px-Juha_Sipilä_18-4-2015.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/mid/mid_Sipila_DSC_0053_20180301-400x300.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/mid/mid_avaruuslonkero-min.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/mid/mid_lataus (3).png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/uploads/small/small_250px-Juha_Sipilä_18-4-2015.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/small/small_Sipila_DSC_0053_20180301-400x300.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/images/addimage.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/images/addimage.handlebars" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/images/gallery.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/images/gallery.handlebars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/small/small_avaruuslonkero-min.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/small/small_lataus (3).png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -111,8 +107,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/router/router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="99" column="30" lean-forward="true" selection-start-line="99" selection-start-column="30" selection-end-line="99" selection-end-column="30" />
+            <state relative-caret-position="336">
+              <caret line="90" column="16" lean-forward="true" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -409,12 +405,12 @@
       <workItem from="1553182457931" duration="43921000" />
       <workItem from="1553234854067" duration="599000" />
       <workItem from="1553630390769" duration="1824000" />
-      <workItem from="1553632227490" duration="7165000" />
+      <workItem from="1553632227490" duration="7257000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65741000" />
+    <option name="totallyTimeSpent" value="65833000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -574,8 +570,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/router/router.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="99" column="30" lean-forward="true" selection-start-line="99" selection-start-column="30" selection-end-line="99" selection-end-column="30" />
+        <state relative-caret-position="336">
+          <caret line="90" column="16" lean-forward="true" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
         </state>
       </provider>
     </entry>
