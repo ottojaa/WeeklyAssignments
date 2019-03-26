@@ -19,6 +19,13 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public/small'));
 app.use(express.static('uploads'));
+app.use((req, res, next) => {
+   if (req.query._method === 'DELETE') {
+       req.method = 'DELETE';
+       req.url = req.path;
+   }
+   next();
+});
 app.set('views', path.join(__dirname, '/views/'));
 app.engine('handlebars', exphbs({
     extname: 'handlebars',
@@ -41,4 +48,8 @@ app.use('/images', router);
 function appListen() {
     app.listen(3000);
 }
+
+
+
+
 

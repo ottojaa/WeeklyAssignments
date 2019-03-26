@@ -66,12 +66,12 @@ function createThumbnails(path, name) {
     }
 }
 
-router.get('/gallery', (req, res, err) => {
+function findAllPosts(req, res) {
     Image.find()
         .select("time title image category details fileName")
         .exec()
         .then((image) => {
-            console.log(image);
+            console.log(image.id);
             const time = moment(image[0].time).format('MMMM Do YYYY, h:mm:ss a');
             res.render("images/gallery.handlebars", {
                 image: image,
@@ -79,15 +79,33 @@ router.get('/gallery', (req, res, err) => {
                 host: process.env.DB_HOST + ':' + process.env.APP_PORT,
                 sendtype: process.env.APP_HTTP,
             });
-        }).catch(err);
+        }).catch((err) => {
+            console.log(err);
+    });
+}
+
+router.get('/gallery', (req, res, err) => {
+    findAllPosts(req, res, err);
 });
-router.get('/images', (req, res, err) => {
+router.get('/images', (req, res) => {
     Image.find()
         .select("time title image category details fileName")
         .exec()
         .then((image) => {
             res.send(image);
         }).catch(err);
+});
+router.put('/gallery/:id', (req, res) => {
+   Image.findOneAndUpdate({_id: req.params.id}, req.body).then(() => {
+       findAllPosts(req, res);
+   });
+});
+
+router.delete('/gallery/:id', (req, res) => {
+    console.log(req.params.id);
+    Image.findOneAndDelete({_id: req.params.id}).then(() => {
+        findAllPosts(req, res);
+    });
 });
 
 module.exports = router;
