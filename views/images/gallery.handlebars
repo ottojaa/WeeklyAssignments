@@ -30,16 +30,20 @@
                 <tr>
                     <div class="col-lg-2" style="margin: 15px !important; text-align: center;">
                         <div>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" data-val="{{this._id}}">
-                                Delete Image
-                            </button>
-                            <p style="color: darkgrey;">{{moment time 'MMMM Do YYYY, h:mm:ss a'}}</p>
-                            <img class="resize" src="http://localhost:3000/small/small_{{this.fileName}}">
-                            <div class="flex">
-                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#my-modal"
-                                        data-val="{{this.fileName}}"><i class="fa fa-list"></i>
-                                    View Sizes
+                            <div class="row extra">
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter" data-val="{{this._id}}">
+                                    Delete
                                 </button>
+                                <a class="btn btn-secondary btn-sm" href="/images/gallery/{{this._id}}">Edit</a>
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#my-modal"
+                                        data-val="{{this.fileName}}"><i class="fa fa-list"></i>
+                                    Sizes
+                                </button>
+                            </div>
+                            <p style="color: darkgrey;">{{moment time 'MMMM Do YYYY, h:mm:ss a'}}</p>
+                            <img class="resize" src="http://localhost:3000/{{this.fileName}}">
+                            <div class="flex">
+
                             </div>
                             <h3>{{this.title}}</h3>
                             <p style="color: darkgrey; font-size: 13px;">{{this.category}}</p>

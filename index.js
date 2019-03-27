@@ -3,6 +3,7 @@ require('handlebars');
 const router = require('./router/router.js');
 const express = require('express');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 let Handlebars = require("handlebars");
 let MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
@@ -13,11 +14,12 @@ const exphbs = require('express-handlebars');
 const app = express();
 
 app.use(bodyParser.urlencoded({
-    extended: true
+    extended: false
 }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public/small'));
+app.use(methodOverride('_method'));
 app.use(express.static('uploads'));
 app.use((req, res, next) => {
    if (req.query._method === 'DELETE') {

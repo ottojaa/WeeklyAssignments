@@ -7,6 +7,11 @@
 .margin{
     margin: 100px;
 }
+.resize{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
 .flexbox{
 
     display: flex;
@@ -29,7 +34,6 @@
 }
 .row{
     display: flex;
-    align-items: center;
     margin: auto;
     flex-direction: row;
 }
@@ -54,9 +58,11 @@
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 .col-lg-2{
+    padding: 10px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     background: white;
     min-width: 250px;
-    height: 400px;
+    max-width: 280px;
+    max-height: 480px;
 }
 

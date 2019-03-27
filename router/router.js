@@ -19,12 +19,24 @@ const upload = multer({
     storage: storage,
 });
 
+/////////////////// ROUTES /////////////////////////
+
 router.get('/', (req, res) => {
     res.render("images/addimage.handlebars", {
         viewTemplate: 'Image Upload',
         host: process.env.DB_HOST + ':' + process.env.APP_PORT,
         sendtype: process.env.APP_HTTP,
     });
+});
+
+router.get('/gallery/:id', (req, res) => {
+    Image.findById({_id: req.params.id})
+        .then((image) => {
+            res.render("images/editPost.handlebars", {
+                viewTemplate: 'Edit post details',
+                image: image
+            })
+        });
 });
 
 router.post('/', upload.single('image'), (req, res) => {
@@ -50,12 +62,44 @@ router.post('/', upload.single('image'), (req, res) => {
     });
 });
 
+router.get('/gallery', (req, res, err) => {
+    findAllPosts(req, res, err);
+});
+router.get('/images', (req, res) => {
+    Image.find()
+        .select("time title image category details fileName")
+        .exec()
+        .then((image) => {
+            res.send(image);
+        }).catch(err);
+});
+router.post('/gallery/:id', upload.single('image'), (req, res) => {
+    const updatedPost = {
+      title: req.body.title,
+      details : req.body.details,
+      category : req.body.category
+    };
+    console.log(updatedPost);
+    Image.findByIdAndUpdate({_id: req.params.id}, {$set: updatedPost}).then(() => {
+        findAllPosts(req, res);
+    });
+});
+
+router.delete('/gallery/:id', (req, res) => {
+    console.log(req.params.id);
+    Image.findOneAndDelete({_id: req.params.id}).then(() => {
+        findAllPosts(req, res);
+    });
+});
+
+//////////////////// FUNCTIONS //////////////////////
+
 function createThumbnails(path, name) {
     let width = 200;
     let height = 112;
-    for (let i = 1; i <= 2; i++){
+    for (let i = 1; i <= 2; i++) {
         let filePath = 'uploads/small/small_';
-        if (i === 2){
+        if (i === 2) {
             filePath = 'uploads/mid/mid_';
         }
         sharp(path)
@@ -80,32 +124,8 @@ function findAllPosts(req, res) {
                 sendtype: process.env.APP_HTTP,
             });
         }).catch((err) => {
-            console.log(err);
+        console.log(err);
     });
 }
-
-router.get('/gallery', (req, res, err) => {
-    findAllPosts(req, res, err);
-});
-router.get('/images', (req, res) => {
-    Image.find()
-        .select("time title image category details fileName")
-        .exec()
-        .then((image) => {
-            res.send(image);
-        }).catch(err);
-});
-router.put('/gallery/:id', (req, res) => {
-   Image.findOneAndUpdate({_id: req.params.id}, req.body).then(() => {
-       findAllPosts(req, res);
-   });
-});
-
-router.delete('/gallery/:id', (req, res) => {
-    console.log(req.params.id);
-    Image.findOneAndDelete({_id: req.params.id}).then(() => {
-        findAllPosts(req, res);
-    });
-});
 
 module.exports = router;
