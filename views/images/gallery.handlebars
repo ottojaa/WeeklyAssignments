@@ -14,11 +14,49 @@
 
 
 </head>
-<body style="background-color: #ff5252 !important; margin: 0 !important;">
-<div class="flex">
-    <a class="btn btn-dark flex" href="/images/"><i class="fa fa-upload"></i> Go to upload page</a>
+<body class="background" style="margin: 0 !important;">
+<div class="flex darkgrey boxshadow">
+    <a class="btn btn-dark flex" href="/images/"><i class="fa fa-upload"></i> Upload Images</a>
 </div>
+<div class="container">
+    <div class="row searchFilter">
+        <div class="col-sm-12">
+            <form action="/images/search" class="input-group" method="POST" autocomplete="off" enctype="multipart/form-data">
+                <input id="table_filter" type="text" class="form-control" name="searchterm"
+                       aria-label="Text input with segmented button dropdown">
+                <div class="input-group-btn">
+                    <button id="dropdown-button" type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="label-icon">All</span>
+                        <span class="caret">&nbsp;</span></button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <ul class="category_filters">
+                            <li>
+                                <input onclick="changeLabel(2)" type="radio" name="searchBy" id="all" value="all" checked><label
+                                    class="category-label" for="title">All</label>
+                            </li>
+                            <li>
+                                <input onclick="changeLabel(2)" type="radio" name="searchBy" id="title" value="title"><label
+                                    class="category-label" for="title">Title</label>
+                            </li>
+                            <li>
+                                <input onclick="changeLabel(3)" type="radio" name="searchBy" id="category" value="category"><label
+                                    class="category-label" for="category">Category</label>
+                            </li>
+                            <li>
+                                <input onclick="changeLabel(4)" type="radio" name="searchBy" id="details" value="details"><label
+                                    class="category-label" for="details">Description</label>
+                            </li>
+                        </ul>
+                    </div>
 
+                </div>
+                <button id="searchBtn" type="submit" class="btn btn-secondary btn-search"><span
+                        class="glyphicon glyphicon-search">&nbsp;</span> <span class="label-icon">Search</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
 <div class="flexbox">
     <div class="row extra">
         <table>
@@ -31,20 +69,21 @@
                     <div class="col-lg-2" style="margin: 15px !important; text-align: center;">
                         <div>
                             <div class="row extra">
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter" data-val="{{this._id}}">
-                                    Delete
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                        data-target="#exampleModalCenter" data-val="{{this._id}}">
+                                    <i class="fa fa-trash"></i>Delete
                                 </button>
-                                <a class="btn btn-secondary btn-sm" href="/images/gallery/{{this._id}}">Edit</a>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#my-modal"
+                                <a class="btn btn-secondary btn-sm" href="/images/gallery/{{this._id}}"><i
+                                        class="fa fa-edit"></i>Edit</a>
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                        data-target="#my-modal"
                                         data-val="{{this.fileName}}"><i class="fa fa-list"></i>
                                     Sizes
                                 </button>
                             </div>
+                            Upload date:
                             <p style="color: darkgrey;">{{moment time 'MMMM Do YYYY, h:mm:ss a'}}</p>
                             <img class="resize" src="http://localhost:3000/{{this.fileName}}">
-                            <div class="flex">
-
-                            </div>
                             <h3>{{this.title}}</h3>
                             <p style="color: darkgrey; font-size: 13px;">{{this.category}}</p>
                             <div style="min-height: min-content;display: flex;}">
@@ -85,20 +124,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
                             <div class="modal-body">
                                 Are you sure? This action cannot be undone.
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <a class="btn btn-danger" data-confirm="Are you sure?" href="/images/gallery/{{this._id}}?_method=DELETE" rel="nofollow">Delete</a>
+                                <a class="btn btn-danger" data-confirm="Are you sure?"
+                                   href="/images/gallery/{{this._id}}?_method=DELETE" rel="nofollow">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -107,8 +143,6 @@
             </tbody>
         </table>
     </div>
-
-
 
 
 </div>
@@ -137,6 +171,23 @@
         } else {
             image.src = '{{sendtype}}{{host}}/' + filename;
         }
+    }
+    function changeLabel(id) {
+        const replacement = document.getElementById("dropdown-button");
+        if (id === 1) {
+            replacement.innerHTML = 'All';
+        }
+        else if(id === 2) {
+            replacement.innerHTML = 'Title';
+        }
+        else if(id === 3) {
+            replacement.innerHTML = 'Category';
+        }
+        else if(id === 4) {
+            replacement.innerHTML = 'Description';
+        }
+
+        console.log(id);
     }
 </script>
 </body>

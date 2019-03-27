@@ -29,15 +29,6 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/gallery/:id', (req, res) => {
-    Image.findById({_id: req.params.id})
-        .then((image) => {
-            res.render("images/editPost.handlebars", {
-                viewTemplate: 'Edit post details',
-                image: image
-            })
-        });
-});
 
 router.post('/', upload.single('image'), (req, res) => {
 
@@ -50,13 +41,8 @@ router.post('/', upload.single('image'), (req, res) => {
         details: req.body.details,
         fileName: req.file.originalname
     });
-    image.save().then((image) => {
-        res.render("images/gallery.handlebars", {
-            viewTemplate: 'Uploaded Succesfully',
-            image: image,
-            host: process.env.DB_HOST + ':' + process.env.APP_PORT,
-            sendtype: process.env.APP_HTTP,
-        })
+    image.save().then(() => {
+        findAllPosts(req, res);
     }).catch((err) => {
         console.log('Failed to upload because:', err);
     });
@@ -73,6 +59,9 @@ router.get('/images', (req, res) => {
             res.send(image);
         }).catch(err);
 });
+
+/////////////////////// Update, Delete and Get-routes for single images//////////////////////////
+
 router.post('/gallery/:id', upload.single('image'), (req, res) => {
     const updatedPost = {
       title: req.body.title,
@@ -92,6 +81,19 @@ router.delete('/gallery/:id', (req, res) => {
     });
 });
 
+router.get('/gallery/:id', (req, res) => {
+    Image.findById({_id: req.params.id})
+        .then((image) => {
+            res.render("images/editPost.handlebars", {
+                viewTemplate: 'Edit post details',
+                image: image
+            })
+        });
+});
+router.post('/search', upload.single('image'), (req, res) => {
+    console.log(req.body);
+    res.send(req.body);
+});
 //////////////////// FUNCTIONS //////////////////////
 
 function createThumbnails(path, name) {
