@@ -76,7 +76,6 @@
             <tbody>
 
             {{#each image}}
-                {{@index}}
                 <tr>
                     <div class="col-lg-2" style="margin: 15px !important; text-align: center;">
                         <div>
@@ -95,7 +94,7 @@
                             </div>
                             Upload date:
                             <p style="color: darkgrey;">{{moment time 'MMMM Do YYYY, h:mm:ss a'}}</p>
-                            <img class="resize" src="http://localhost:3000/{{this.fileName}}">
+                            <img class="resize" src="https://localhost:3000/{{this.fileName}}">
                             <h3>{{this.title}}</h3>
                             <p style="color: darkgrey; font-size: 13px;">{{this.category}}</p>
                             <div style="min-height: min-content;display: flex;}">
@@ -116,7 +115,7 @@
                             <div class="modal-body">
                                 <div class="content"></div>
                                 <div class="row extra">
-                                    <img class="image" src="http://localhost:3000/{{this.fileName}}" id="original">
+                                    <img class="image" src="https://localhost:3000/{{this.fileName}}" id="original">
                                 </div>
                                 <div class="row extra">
                                     <button onclick="changeImage('{{image.[index].fileName}}', 'small')" type="button"

@@ -61,8 +61,11 @@ typings/
 .next
 
 #cert key
-.csr
-.pem
+certrequest.csr
+ssl-cert.pm
+ssl-key.pem
+*.csr
+*.pem
 
 #images
 

@@ -65,7 +65,6 @@ body{
 }
 .row{
     display: flex;
-    margin: auto;
     flex-direction: row;
 }
 
