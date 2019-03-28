@@ -61,7 +61,6 @@ router.post('/', upload.single('image'), (req, res) => {
 router.get('/gallery', (req, res) => {
     ImageController.find_all_posts()
         .then((image) => {
-            console.log(image[3].fileName);
             res.render("images/gallery.handlebars", {
                 image: image
             });
@@ -134,10 +133,7 @@ router.post('/search', upload.single('image'), (req, res) => {
     if (req.body.searchterm !== '' && req.body.searchBy === 'all') {
         ImageController.image_search_all(req.body.searchterm)
             .then((image) => {
-                let count = 0;
-                image.forEach(() => {
-                    count++;
-                });
+                const count = Object.keys(image).length;
                 res.render("images/gallery.handlebars", {
                     viewTemplate: 'Search results found:',
                     image: image,
@@ -159,10 +155,7 @@ router.post('/search', upload.single('image'), (req, res) => {
     } else if (req.body.searchterm !== '' && req.body.searchby !== 'all') {
         ImageController.image_search_by_category(req.body.searchterm, req.body.searchby)
             .then((image) => {
-                let count = 0;
-                image.forEach(() => {
-                    count++;
-                });
+                const count = Object.keys(image).length;
                 res.render("images/gallery.handlebars", {
                     viewTemplate: 'Search results found:',
                     image: image,

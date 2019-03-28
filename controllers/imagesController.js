@@ -1,9 +1,10 @@
 const Image = require('../models/image.js');
 
 exports.image_search_by_category = (searchTerm, searchCategory) => {
-    return Image.find({$text: {$search: searchTerm}})
+    return Image.find({$text: {$search: searchTerm}}, {score: {$meta: "textScore"}})
         .where('category')
         .equals(searchCategory)
+        .sort({score: {$meta: "textScore"}})
         .then((image) => {
             return image;
         }).catch((err) => {

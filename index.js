@@ -14,8 +14,8 @@ const https = require('https');
 const http = require('http');
 const fs = require('fs');
 
-const sslkey = fs.readFileSync('ssl-key.pem');
-const sslcert = fs.readFileSync('ssl-cert.pem');
+const sslkey = fs.readFileSync('ssl-key.pem', 'utf8');
+const sslcert = fs.readFileSync('ssl-cert.pem', 'utf8');
 
 const options = {
     key: sslkey,
@@ -58,12 +58,15 @@ mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${proc
 
 app.use('/images', router);
 
+const httpServer = http.createServer((req, res) => {
+    res.writeHead(301, { 'Location': 'https://localhost:3000' + req.url });
+    res.end();
+})
+const httpsServer = https.createServer(options, app);
+
 function appListen() {
-    https.createServer(options, app).listen(3000);
-    http.createServer((req, res) => {
-        res.writeHead(301, { 'Location': 'https://localhost:3000' + req.url });
-        res.end();
-    }).listen(8001);
+    httpsServer.listen(3000);
+    httpServer.listen(8001);
 }
 
 
