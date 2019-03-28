@@ -10,6 +10,17 @@ MomentHandler.registerHelpers(Handlebars);
 const bodyParser = require('body-parser');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const https = require('https');
+const http = require('http');
+const fs = require('fs');
+
+const sslkey = fs.readFileSync('ssl-key.pem');
+const sslcert = fs.readFileSync('ssl-cert.pem');
+
+const options = {
+    key: sslkey,
+    cert: sslcert
+};
 
 const app = express();
 
@@ -36,7 +47,7 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
-mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/subscribe?authSource=admin`)
+mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/subscribe?authSource=admin`, { useNewUrlParser: true })
     .then(() => {
         console.log('Connection established to db');
     })
@@ -48,7 +59,11 @@ mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${proc
 app.use('/images', router);
 
 function appListen() {
-    app.listen(3000);
+    https.createServer(options, app).listen(3000);
+    http.createServer((req, res) => {
+        res.writeHead(301, { 'Location': 'https://localhost:3000' + req.url });
+        res.end();
+    }).listen(8001);
 }
 
 

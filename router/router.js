@@ -1,6 +1,7 @@
 const express = require('express');
 const moment = require('moment');
 const Image = require('../models/image.js');
+const ImageController = require('../controllers/imagesController.js');
 const router = express.Router();
 const multer = require('multer');
 const sharp = require('sharp');
@@ -19,7 +20,7 @@ const upload = multer({
     storage: storage,
 });
 
-/////////////////// ROUTES /////////////////////////
+/////////////////// Routes /////////////////////////
 
 router.get('/', (req, res) => {
     res.render("images/addimage.handlebars", {
@@ -42,47 +43,83 @@ router.post('/', upload.single('image'), (req, res) => {
         fileName: req.file.originalname
     });
     image.save().then(() => {
-        findAllPosts(req, res);
-    }).catch((err) => {
-        console.log('Failed to upload because:', err);
+        ImageController.find_all_posts()
+            .then((image) => {
+                const time = moment(image[0].time).format('MMMM Do YYYY, h:mm:ss a');
+                res.render("images/gallery.handlebars", {
+                    image: image,
+                    time: time,
+                    host: process.env.DB_HOST + ':' + process.env.APP_PORT,
+                    sendtype: process.env.APP_HTTP,
+                });
+            }).catch((err) => {
+            console.log('Failed to upload because:', err);
+        })
     });
 });
 
-router.get('/gallery', (req, res, err) => {
-    findAllPosts(req, res, err);
+router.get('/gallery', (req, res) => {
+    ImageController.find_all_posts()
+        .then((image) => {
+            console.log(image[3].fileName);
+            res.render("images/gallery.handlebars", {
+                image: image
+            });
+        }).catch((err) => {
+            console.log(err);
+    });
 });
+
 router.get('/images', (req, res) => {
-    Image.find()
-        .select("time title image category details fileName")
-        .exec()
+    ImageController.find_all_posts()
         .then((image) => {
             res.send(image);
-        }).catch(err);
+        });
 });
 
 /////////////////////// Update, Delete and Get-routes for single images//////////////////////////
 
 router.post('/gallery/:id', upload.single('image'), (req, res) => {
     const updatedPost = {
-      title: req.body.title,
-      details : req.body.details,
-      category : req.body.category
+        title: req.body.title,
+        details: req.body.details,
+        category: req.body.category
     };
     console.log(updatedPost);
     Image.findByIdAndUpdate({_id: req.params.id}, {$set: updatedPost}).then(() => {
-        findAllPosts(req, res);
+        ImageController.find_all_posts()
+            .then((image) => {
+                const time = moment(image[0].time).format('MMMM Do YYYY, h:mm:ss a');
+                res.render("images/gallery.handlebars", {
+                    image: image,
+                    time: time,
+                    host: process.env.DB_HOST + ':' + process.env.APP_PORT,
+                    sendtype: process.env.APP_HTTP,
+                });
+            })
     });
 });
 
 router.delete('/gallery/:id', (req, res) => {
     console.log(req.params.id);
     Image.findOneAndDelete({_id: req.params.id}).then(() => {
-        findAllPosts(req, res);
+        ImageController.find_all_posts()
+            .then((image) => {
+                const time = moment(image[0].time).format('MMMM Do YYYY, h:mm:ss a');
+                res.render("images/gallery.handlebars", {
+                    image: image,
+                    time: time,
+                    host: process.env.DB_HOST + ':' + process.env.APP_PORT,
+                    sendtype: process.env.APP_HTTP,
+                });
+            }).catch((err) => {
+                console.log(err);
+        })
     });
 });
 
 router.get('/gallery/:id', (req, res) => {
-    Image.findById({_id: req.params.id})
+    ImageController.find_by_id({_id: req.params.id})
         .then((image) => {
             res.render("images/editPost.handlebars", {
                 viewTemplate: 'Edit post details',
@@ -90,11 +127,54 @@ router.get('/gallery/:id', (req, res) => {
             })
         });
 });
+
+//////////////// Search //////////////////
+
 router.post('/search', upload.single('image'), (req, res) => {
-    console.log(req.body);
-    res.send(req.body);
+    if (req.body.searchterm !== '' && req.body.searchBy === 'all') {
+        ImageController.image_search_all(req.body.searchterm)
+            .then((image) => {
+                let count = 0;
+                image.forEach(() => {
+                    count++;
+                });
+                res.render("images/gallery.handlebars", {
+                    viewTemplate: 'Search results found:',
+                    image: image,
+                    count: count
+                });
+            }).catch((err) => {
+            console.log(err);
+        });
+    } else if (req.body.searchterm === '') {
+        ImageController.image_search_all(req.body.searchterm)
+            .then((image) => {
+                res.render("images/gallery.handlebars", {
+                    viewTemplate: 'Enter a search term!',
+                    image: image
+                })
+            }).catch((err) => {
+            console.log(err);
+        });
+    } else if (req.body.searchterm !== '' && req.body.searchby !== 'all') {
+        ImageController.image_search_by_category(req.body.searchterm, req.body.searchby)
+            .then((image) => {
+                let count = 0;
+                image.forEach(() => {
+                    count++;
+                });
+                res.render("images/gallery.handlebars", {
+                    viewTemplate: 'Search results found:',
+                    image: image,
+                    count: count
+                })
+            }).catch((err) => {
+            console.log(err);
+        });
+    }
 });
-//////////////////// FUNCTIONS //////////////////////
+
+//////////////////// Functions //////////////////////
 
 function createThumbnails(path, name) {
     let width = 200;
@@ -112,22 +192,5 @@ function createThumbnails(path, name) {
     }
 }
 
-function findAllPosts(req, res) {
-    Image.find()
-        .select("time title image category details fileName")
-        .exec()
-        .then((image) => {
-            console.log(image.id);
-            const time = moment(image[0].time).format('MMMM Do YYYY, h:mm:ss a');
-            res.render("images/gallery.handlebars", {
-                image: image,
-                time: time,
-                host: process.env.DB_HOST + ':' + process.env.APP_PORT,
-                sendtype: process.env.APP_HTTP,
-            });
-        }).catch((err) => {
-        console.log(err);
-    });
-}
 
 module.exports = router;

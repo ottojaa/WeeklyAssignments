@@ -21,7 +21,20 @@ body{
     height: 200px;
     object-fit: contain;
 }
+.title{
+    text-align: center;
+    color: white;
+
+}
+.titleflex{
+    display: flex;
+    justify-content: center;
+}
 .flexbox{
+    width: 90%;
+    min-height: 700px;
+    border-radius: 5px;
+    min-width: 700px;
     animation: fadeIn 0.3s;
     display: flex;
     flex-direction: row;
@@ -29,7 +42,6 @@ body{
     background-image: url(../tweed.png);
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     padding: 20px;
-    width: fit-content;
     justify-content: space-evenly;
 }
 .image{

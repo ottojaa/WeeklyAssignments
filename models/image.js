@@ -22,4 +22,6 @@ const imageSchema = mongoose.Schema({
     }
 });
 
+imageSchema.index({ title: 'text', category: 1, details: 'text'});
+
 module.exports =  mongoose.model('Image', imageSchema);
