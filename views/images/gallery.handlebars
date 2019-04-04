@@ -31,26 +31,26 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <ul class="category_filters">
                             <li>
-                                <input onclick="changeLabel(1)" type="radio" name="searchBy" id="all" value="all" checked><label
+                                <input onclick="changeLabel('All')" type="radio" name="searchBy" id="all" value="all" checked><label
                                     class="category-label" for="title">All</label>
                             </li>
                             <li>
-                                <input onclick="changeLabel(2)" type="radio" name="searchBy" id="Autot" value="Autot"><label
+                                <input onclick="changeLabel('Autot')" type="radio" name="searchBy" id="Autot" value="Autot"><label
                                     class="category-label" for="title">Autot</label>
                             </li>
                             <li>
-                                <input onclick="changeLabel(3)" type="radio" name="searchBy" id="Kissat" value="Kissat"><label
+                                <input onclick="changeLabel('Kissat')" type="radio" name="searchBy" id="Kissat" value="Kissat"><label
                                     class="category-label" for="category">Kissat</label>
                             </li>
                             <li>
-                                <input onclick="changeLabel(4)" type="radio" name="searchBy" id="NSFW" value="NSFW"><label
+                                <input onclick="changeLabel('NSFW')" type="radio" name="searchBy" id="NSFW" value="NSFW"><label
                                     class="category-label" for="details">NSFW</label>
                             <li>
-                                <input onclick="changeLabel(5)" type="radio" name="searchBy" id="Propaganda" value="Propaganda"><label
+                                <input onclick="changeLabel('Propaganda')" type="radio" name="searchBy" id="Propaganda" value="Propaganda"><label
                                     class="category-label" for="details">Propaganda</label>
                             </li>
                             <li>
-                                <input onclick="changeLabel(6)" type="radio" name="searchBy" id="Surreal" value="Surreal"><label
+                                <input onclick="changeLabel('Surreal')" type="radio" name="searchBy" id="Surreal" value="Surreal"><label
                                     class="category-label" for="details">Surreal</label>
                             </li>
                         </ul>
@@ -170,7 +170,7 @@
 <script src="../../index.js"></script>
 
 <script type="text/javascript">
-    //##################### CLIENTSIDE FUNCTIONS ####################//
+    //-------------------- Clientside functions --------------------//
 
     function changeImage(filename, buttonId) {                // used to change image sources on the modal component
         const image = document.getElementById('original');
@@ -185,24 +185,7 @@
     }
     function changeLabel(id) {
         const replacement = document.getElementById("dropdown-button");
-        if (id === 1) {
-            replacement.innerHTML = 'All';
-        }
-        else if(id === 2) {
-            replacement.innerHTML = 'Autot';
-        }
-        else if(id === 3) {
-            replacement.innerHTML = 'Kissat';
-        }
-        else if(id === 4) {
-            replacement.innerHTML = 'NSFW';
-        }
-        else if(id === 5) {
-            replacement.innerHTML = 'Propaganda';
-        }
-        else if(id === 6) {
-            replacement.innerHTML = 'Surreal';
-        }
+        replacement.innerHTML = id;
     }
 </script>
 </body>

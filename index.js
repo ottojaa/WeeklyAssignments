@@ -12,6 +12,7 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const https = require('https');
 const http = require('http');
+const jwt = require('./helpers/jwt_validation');
 const fs = require('fs');
 
 const sslkey = fs.readFileSync('ssl-key.pem');
@@ -30,6 +31,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public/small'));
+app.use(jwt());
 app.use(methodOverride('_method'));
 app.use(express.static('uploads'));
 app.use((req, res, next) => {
@@ -65,6 +67,7 @@ function appListen() {
         res.end();
     }).listen(8001);
 }
+
 
 
 

@@ -1,0 +1,4 @@
+{
+    "connectionString": "mongodb://localhost/WeeklyAssignments",
+    "secret": "Very secret key for my application"
+}

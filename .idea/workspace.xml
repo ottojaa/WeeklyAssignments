@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bd3809cf-77df-4340-8840-41a262d5b31d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/images/gallery.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/images/gallery.handlebars" afterDir="false" />
-    </list>
+    <list default="true" id="bd3809cf-77df-4340-8840-41a262d5b31d" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +12,7 @@
     <session id="1401291371">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="14" />
+          <entry key="project.closed" value="15" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.2" value="1" />
@@ -165,16 +160,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/image.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+              <caret line="26" column="55" lean-forward="true" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/styles.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="552">
@@ -196,7 +191,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>uploads</find>
       <find>style</find>
       <find>console</find>
       <find>view sizes</find>
@@ -226,6 +220,7 @@
       <find>search term</find>
       <find>findallposts</find>
       <find>http</find>
+      <find>margin:</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -292,7 +287,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="width" value="2576" />
-    <option name="height" value="1416" />
+    <option name="height" value="1407" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -306,6 +301,11 @@
             <path>
               <item name="WeeklyAssignments" type="b2602c69:ProjectViewProjectNode" />
               <item name="WeeklyAssignments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WeeklyAssignments" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WeeklyAssignments" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="WeeklyAssignments" type="b2602c69:ProjectViewProjectNode" />
@@ -327,6 +327,12 @@
               <item name="WeeklyAssignments" type="b2602c69:ProjectViewProjectNode" />
               <item name="WeeklyAssignments" type="462c0819:PsiDirectoryNode" />
               <item name="uploads" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WeeklyAssignments" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WeeklyAssignments" type="462c0819:PsiDirectoryNode" />
+              <item name="uploads" type="462c0819:PsiDirectoryNode" />
+              <item name="mid" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="WeeklyAssignments" type="b2602c69:ProjectViewProjectNode" />
@@ -363,7 +369,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -415,12 +421,12 @@
       <workItem from="1553697265548" duration="5510000" />
       <workItem from="1553775369786" duration="13401000" />
       <workItem from="1553795595558" duration="7238000" />
-      <workItem from="1553802851090" duration="2702000" />
+      <workItem from="1553802851090" duration="4968000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107831000" />
+    <option name="totallyTimeSpent" value="110097000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -432,10 +438,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="2576" height="1416" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="0" width="2576" height="1407" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21184419" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21184419" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -448,7 +453,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.33042097" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3328" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -598,13 +603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/image.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/images/gallery.handlebars">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="571">
@@ -616,6 +614,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
           <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/image.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="55" lean-forward="true" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
         </state>
       </provider>
     </entry>
